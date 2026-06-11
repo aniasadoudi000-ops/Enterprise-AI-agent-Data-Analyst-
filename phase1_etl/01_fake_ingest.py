@@ -1,5 +1,5 @@
-import json
 import os
+import importlib.util
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -11,13 +11,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_FILE = BASE_DIR / "data" / "fake_financial_reports.json"
 COLLECTION_NAME = "financial_reports"
 
 
-def load_documents():
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+def load_extractor_module():
+    extractor_path = BASE_DIR / "03_extract_pdfs.py"
+    spec = importlib.util.spec_from_file_location("phase1_pdf_extractor", extractor_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load extractor module from {extractor_path}")
+
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def create_collection(client: QdrantClient):
@@ -43,7 +48,11 @@ def main():
     create_collection(client)
 
     embedder = SentenceTransformer("all-MiniLM-L6-v2")
-    documents = load_documents()
+    extractor = load_extractor_module()
+    documents = extractor.extract_all_documents()
+
+    if not documents:
+        raise RuntimeError("No chunks were extracted from the source PDFs.")
 
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform([doc["text"] for doc in documents])
@@ -68,16 +77,19 @@ def main():
                     "company": document["company"],
                     "year": document["year"],
                     "document_type": document["document_type"],
-                    "topic": document["topic"],
+                    "source_file": document["source_file"],
+                    "source_page": document["source_page"],
+                    "chunk_id": document["chunk_id"],
+                    "char_count": document["char_count"],
                     "text": document["text"],
-                    "source": "fake_test_dataset",
+                    "source": "raw_pdf_documents",
                 },
             )
         )
 
     client.upsert(collection_name=COLLECTION_NAME, points=points)
-    print(f"Inserted {len(points)} fake documents into Qdrant.")
-    print("You can now use this dataset to test the RAG agent before replacing it with 10 real reports.")
+    print(f"Inserted {len(points)} PDF chunks into Qdrant.")
+    print("The phase 1 pipeline is now based on the real PDF corpus in data/raw.")
 
 
 

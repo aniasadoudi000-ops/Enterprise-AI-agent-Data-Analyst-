@@ -22,16 +22,16 @@ def main():
 
     collection_info = client.get_collection(COLLECTION_NAME)
     point_count = collection_info.points_count
-    print(f"Collection '{COLLECTION_NAME}' contains {point_count} points.")
+    print(f"Collection '{COLLECTION_NAME}' contains {point_count} chunks.")
 
     embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
-    query_text = "What did NovaGrid say about supply chain delays?"
+    query_text = "What did Apple say about services revenue and growth in 2024?"
     query_vector = embedder.encode(query_text).tolist()
 
     strict_filter = models.Filter(
         must=[
-            models.FieldCondition(key="company", match=models.MatchValue(value="NovaGrid")),
+            models.FieldCondition(key="company", match=models.MatchValue(value="Apple")),
             models.FieldCondition(key="year", match=models.MatchValue(value=2024)),
         ]
     )
@@ -51,7 +51,9 @@ def main():
         print(f"\n[{i}] score={hit.score:.4f}")
         print("  company:", hit.payload.get("company"))
         print("  year:", hit.payload.get("year"))
-        print("  topic:", hit.payload.get("topic"))
+        print("  source_file:", hit.payload.get("source_file"))
+        print("  source_page:", hit.payload.get("source_page"))
+        print("  chunk_id:", hit.payload.get("chunk_id"))
         print("  text:", hit.payload.get("text"))
 
 

@@ -1,7 +1,8 @@
 # Enterprise-AI-agent-Data-Analyst-
 Multi-Modal Enterprise Agent—an autonomous AI analyst capable of answering complex business questions by navigating both unstructured documents (PDFs/Reports) and structured relational databases (SQL).
 
-## Quick start for the first prototype
-- Start with the fake test dataset in `phase1_etl/data/fake_financial_reports.json`.
-- Run `python phase1_etl/01_fake_ingest.py` after starting Qdrant locally.
-- Replace this fake corpus later with your 10 real documents once the pipeline works end to end.
+## Quick start for phase 1
+- Put the source PDF reports in `data/raw`.
+- Run `python phase1_etl/03_extract_pdfs.py` to inspect extraction and semantic chunking.
+- Run `python phase1_etl/01_fake_ingest.py` to ingest the PDF chunks into Qdrant.
+- Run `python phase1_etl/02_phase1_validation.py` to confirm retrieval with metadata filters.
