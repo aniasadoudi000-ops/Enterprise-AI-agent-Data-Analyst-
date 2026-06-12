@@ -6,3 +6,9 @@ qdrant-client
 sentence-transformers
 scikit-learn
 pdfplumber
+fastapi
+uvicorn
+langchain-groq
+langgraph
+langchain-core
+langchain-community
