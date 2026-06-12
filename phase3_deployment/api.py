@@ -55,6 +55,18 @@ def query(request: QueryRequest):
     start_time = time.time()
 
     try:
+        # Check semantic cache first
+        from phase2_agent.semantic_cache import get_cached_answer, store_in_cache
+        cached = get_cached_answer(request.question)
+        if cached:
+            return QueryResponse(
+                question=request.question,
+                answer=cached["answer"],
+                token_cost_usd=0.0,
+                latency_seconds=round(time.time() - start_time, 3),
+            )
+
+        # Cache miss — run the agent
         agent = build_agent()
         result = agent.invoke({
             "messages": [HumanMessage(content=request.question)],
@@ -64,6 +76,9 @@ def query(request: QueryRequest):
         final_answer = result["messages"][-1].content
         total_cost = result.get("token_cost", 0.0)
         latency = round(time.time() - start_time, 3)
+
+        # Store in cache for future requests
+        store_in_cache(request.question, final_answer)
 
         print(f"[API] question='{request.question[:50]}' | cost=${total_cost:.6f} | latency={latency}s")
 
