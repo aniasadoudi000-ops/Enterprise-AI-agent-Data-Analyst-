@@ -15,7 +15,7 @@ COLLECTION_NAME = "financial_reports"
 
 
 def load_extractor_module():
-    extractor_path = BASE_DIR / "03_extract_pdfs.py"
+    extractor_path = BASE_DIR / "extract_pdfs.py"
     spec = importlib.util.spec_from_file_location("phase1_pdf_extractor", extractor_path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Unable to load extractor module from {extractor_path}")

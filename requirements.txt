@@ -1,14 +1,28 @@
+# LLM & Agent
 openai
 instructor
 pydantic
 python-dotenv
-qdrant-client
-sentence-transformers
-scikit-learn
-pdfplumber
-fastapi
-uvicorn
 langchain-groq
 langgraph
 langchain-core
 langchain-community
+
+# Vector DB
+qdrant-client
+
+# PDF & Data
+pdfplumber
+scikit-learn
+numpy
+
+# API
+fastapi
+uvicorn
+
+# Cache
+redis
+
+# Embeddings (CPU léger - IMPORTANT)
+torch --extra-index-url https://download.pytorch.org/whl/cpu
+sentence-transformers

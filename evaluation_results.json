@@ -1,0 +1,77 @@
+[
+  {
+    "id": "Q1",
+    "type": "SQL only",
+    "question": "What was Apple's total revenue in 2023?",
+    "ground_truth": "Apple's total revenue in 2023 was $383,285 million.",
+    "agent_answer": "Apple's total revenue in 2023 was $383,285 million.",
+    "token_cost_usd": 0.000117,
+    "latency_seconds": 0.79,
+    "status": "ok",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q2",
+    "type": "Vector search only",
+    "question": "What did Tesla say about supply chain risks in their 2023 annual report?",
+    "ground_truth": "Tesla's 2023 10-K discusses supply chain disruptions, component shortages, and dependency on single-source suppliers as key operational risks.",
+    "agent_answer": "Based on the search results, it appears that Tesla's 2023 annual report does not explicitly mention \"supply chain risks\" in the provided text snippets. However, it's possible that the topic is discussed in other parts of the report.\n\nTo get a more accurate answer, I would recommend searching the entire report or checking the company's website for more information on their supply chain risks. Additionally, you can try searching for related keywords such as \"supply chain management\" or \"logistics risks\" to see if Tesla mentions anything relevant in their report.\n\nIt's also worth noting that the search results provided are based on a limited snippet of the report, and it's possible that the topic of supply chain risks is discussed in more detail elsewhere in the document. If you have access to the full report, I would recommend reviewing it thoroughly to get a more comprehensive understanding of Tesla's supply chain risks.",
+    "token_cost_usd": 0.000196,
+    "latency_seconds": 1.38,
+    "status": "ok",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q3",
+    "type": "SQL only",
+    "question": "Compare Microsoft's net income between 2022 and 2023. Did it grow?",
+    "ground_truth": "Microsoft net income was $72,738M in 2022 and $72,361M in 2023 — a slight decrease of ~0.5%.",
+    "agent_answer": "Microsoft's net income in 2022 was $72,738 million, and in 2023 it was $72,361 million. The net income decreased by $377 million, or 0.52%, between 2022 and 2023.",
+    "token_cost_usd": 0.000143,
+    "latency_seconds": 0.87,
+    "status": "ok",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q4",
+    "type": "Multi-modal (SQL + Vector)",
+    "question": "What was Apple's hardware revenue strategy in 2024, and how much gross profit did they generate that year?",
+    "ground_truth": "Apple's gross profit in 2024 was $180,683M. Their reports discuss continued investment in custom silicon (M-series chips) and services bundled with hardware.",
+    "agent_answer": "Based on the search results from the Qdrant vector database, Apple's hardware revenue strategy in 2024 is not explicitly stated in the provided text. However, the text does mention that the report is for the fiscal year ended September 28, 2024, which suggests that the company's hardware revenue strategy may be discussed in the report.\n\nAccording to the SQL query results, Apple generated $180,683,000 in gross profit in 2024. \n\nTo get a more detailed understanding of Apple's hardware revenue strategy in 2024, it would be necessary to review the entire 10-K report, particularly the sections related to revenue and product sales.",
+    "token_cost_usd": 0.000187,
+    "latency_seconds": 2.35,
+    "status": "ok",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q5",
+    "type": "Multi-modal (SQL + Vector)",
+    "question": "Which company had the highest R&D expenses in 2023, and what did their report say about AI investments?",
+    "ground_truth": "Microsoft had the highest R&D expense in 2023 at $29,510M... wait — Microsoft 2023 R&D was $27,195M, Apple was $29,915M. Their reports discuss AI integration across products (Copilot, Azure AI).",
+    "agent_answer": "The company with the highest R&D expenses in 2023 was Apple, with $29,915 million in R&D expenses. According to Apple's 2023 10-K report, the company invested in AI technologies, but the specific details of these investments are not provided in the report. The report does mention that Apple is committed to innovating and investing in new technologies, including AI, to drive growth and improve customer experience. However, the exact nature and extent of Apple's AI investments are not disclosed in the report.",
+    "token_cost_usd": 0.000265,
+    "latency_seconds": 2.32,
+    "status": "ok",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  }
+]
