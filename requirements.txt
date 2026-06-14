@@ -1,0 +1,33 @@
+# LLM & Agent
+openai
+instructor
+pydantic
+python-dotenv
+langchain-groq
+langgraph
+langchain-core
+langchain-community
+
+# Vector DB
+qdrant-client
+
+# PDF & Data
+pdfplumber
+scikit-learn
+numpy
+
+# API
+fastapi
+uvicorn
+
+# Cache
+redis
+
+# Embeddings (CPU léger - IMPORTANT)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers
+
+# UI & Cloud evaluation
+streamlit
+requests

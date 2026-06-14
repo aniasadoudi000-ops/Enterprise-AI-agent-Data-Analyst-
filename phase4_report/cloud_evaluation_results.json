@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Q1",
+    "type": "SQL only",
+    "question": "What was Apple's total revenue in 2023?",
+    "ground_truth": "Apple's total revenue in 2023 was $383,285 million.",
+    "agent_answer": "Apple's total revenue in 2023 was $383,285 million.",
+    "token_cost_usd": 0.0,
+    "latency_seconds": 0.046,
+    "status": "ok",
+    "target_url": "https://enterprise-ai-analyst-883304283246.europe-west1.run.app",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q2",
+    "type": "Vector search only",
+    "question": "What did Tesla say about supply chain risks in their 2023 annual report?",
+    "ground_truth": "Tesla's 2023 10-K discusses supply chain disruptions, component shortages, and dependency on single-source suppliers as key operational risks.",
+    "agent_answer": "Unfortunately, the search_vector_db function is not working as expected. Let me try to find the information in a different way.\n\nAccording to Tesla's 2023 annual report, the company discusses supply chain risks in the \"Risk Factors\" section. However, without access to the search_vector_db function, I cannot provide a direct quote or specific details from the report.\n\nIf you need more information, I suggest checking Tesla's official website or financial websites that provide access to annual reports and other financial documents.",
+    "token_cost_usd": 0.0,
+    "latency_seconds": 0.036,
+    "status": "ok",
+    "target_url": "https://enterprise-ai-analyst-883304283246.europe-west1.run.app",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q3",
+    "type": "SQL only",
+    "question": "Compare Microsoft's net income between 2022 and 2023. Did it grow?",
+    "ground_truth": "Microsoft net income was $72,738M in 2022 and $72,361M in 2023 -- a slight decrease of ~0.5%.",
+    "agent_answer": "Microsoft's net income in 2022 was $72,738 million, and in 2023 it was $72,361 million. The net income decreased by $377 million, or 0.52%, between 2022 and 2023.",
+    "token_cost_usd": 0.000143,
+    "latency_seconds": 0.599,
+    "status": "ok",
+    "target_url": "https://enterprise-ai-analyst-883304283246.europe-west1.run.app",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q4",
+    "type": "Multi-modal (SQL + Vector)",
+    "question": "What was Apple's hardware revenue strategy in 2024, and how much gross profit did they generate that year?",
+    "ground_truth": "Apple's gross profit in 2024 was $180,683M. Their reports discuss continued investment in custom silicon (M-series chips) and services bundled with hardware.",
+    "agent_answer": "Apple's total revenue in 2023 was $383,285 million.",
+    "token_cost_usd": 0.0,
+    "latency_seconds": 0.046,
+    "status": "ok",
+    "target_url": "https://enterprise-ai-analyst-883304283246.europe-west1.run.app",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "Q5",
+    "type": "Multi-modal (SQL + Vector)",
+    "question": "Which company had the highest R&D expenses in 2023, and what did their report say about AI investments?",
+    "ground_truth": "Apple had the highest R&D expense in 2023 at $29,915M. Their reports discuss AI integration across products (on-device ML, Apple Intelligence).",
+    "agent_answer": "HTTP 500: {\"detail\":\"Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01ksstf164etwthk52gp9bg1wf` service tier `on_demand` on tokens per day (",
+    "token_cost_usd": 0.0,
+    "latency_seconds": 1.66,
+    "status": "http_error",
+    "target_url": "https://enterprise-ai-analyst-883304283246.europe-west1.run.app",
+    "scores": {
+      "faithfulness": null,
+      "answer_relevance": null,
+      "notes": ""
+    }
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "fake-001",
+    "company": "NovaGrid",
+    "year": 2024,
+    "document_type": "annual_report",
+    "topic": "renewable energy growth",
+    "text": "NovaGrid reported strong growth in solar installations and battery storage contracts. Management highlighted stable demand in Europe and a reduction in supply chain delays after supplier diversification. Gross margin improved due to better procurement terms and higher software subscription revenue."
+  },
+  {
+    "id": "fake-002",
+    "company": "BlueLedger",
+    "year": 2023,
+    "document_type": "quarterly_report",
+    "topic": "payments and fraud",
+    "text": "BlueLedger observed a 15 percent increase in digital payment volume during the quarter. The company also noted rising fraud attempts in North America and invested in anomaly detection models to reduce chargeback losses. Operating expenses increased, but revenue growth remained above expectations."
+  },
+  {
+    "id": "fake-003",
+    "company": "AeroNova",
+       "year": 2022,
+    "document_type": "risk_report",
+    "topic": "chip shortages",
+    "text": "AeroNova cited semiconductor shortages as a major constraint on avionics production. Delivery timelines extended across several regions, and logistics costs increased due to shipping disruptions. Management emphasized mitigation plans based on supplier dual sourcing and local component assembly."
+  },
+  {
+    "id": "fake-004",
+    "company": "HelioCloud",
+    "year": 2024,
+    "document_type": "strategy_note",
+    "topic": "AI infrastructure",
+    "text": "HelioCloud expanded its AI inference capacity to support enterprise customers. Revenue from managed GPU services grew quickly, while energy consumption became a key operational concern for future expansion. The company expects efficiency gains from hardware refresh cycles and software optimization."
+  },
+  {
+    "id": "fake-005",
+    "company": "CityRetail",
+    "year": 2023,
+    "document_type": "market_update",
+    "topic": "consumer demand",
+    "text": "CityRetail saw resilient demand in urban retail channels despite inflation pressure. Online sales grew faster than in-store sales, and the company improved inventory forecasting to reduce stockouts. Management flagged higher wages and freight costs as the main pressure points for margins."
+  },
+  {
+    "id": "fake-006",
+    "company": "GreenFleet",
+    "year": 2024,
+    "document_type": "sustainability_report",
+    "topic": "fleet electrification",
+    "text": "GreenFleet accelerated electrification of its delivery fleet and reported stable progress in charging infrastructure deployment. The company stated that battery cost reductions and government incentives supported the rollout. Supply chain bottlenecks for charging hardware remain a short-term risk."
+  }
+]
