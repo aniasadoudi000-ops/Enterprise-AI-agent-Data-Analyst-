@@ -183,7 +183,7 @@ gcloud run deploy enterprise-ai-analyst \
 
 **Live endpoint:** `https://enterprise-ai-analyst-883304283246.europe-west1.run.app`
 
-**Demo video:** *(Loom/YouTube URL)*
+**Demo video:** [Loom URL](https://www.loom.com/share/178103eedbdf44fba8a2adc156351a58)
 
 ---
 
