@@ -121,6 +121,54 @@ if page == "📋 Project Overview":
 
     st.markdown("---")
 
+    # Database contant
+    
+    st.subheader("⚠️ What the Vector DB Actually Contains")
+    st.warning(
+        "The ingested PDF documents currently contain **only the cover pages** "
+        "of the SEC 10-K annual reports. This means vector search is limited to "
+        "the following information:"
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+    **✅ Available in Vector DB**
+    | Info |
+    |---|
+    | Years ingested |
+    | Legal name |
+    | IRS number |
+    | State of incorporation |
+    | HQ address |
+    | Phone number |
+    | Fiscal year end |
+    | Stock ticker |
+    """)
+
+    with col2:
+        st.markdown("""
+    **❌ NOT always available in Vector DB**
+    - Gross profit / Revenue figures
+    - Supply chain risk discussion
+    - Hardware revenue strategy
+    - AI investment details
+    - R&D expense breakdown
+    - Any narrative content from the report body
+
+    > These figures come exclusively from the **SQLite database** (structured data).
+    """)
+
+    st.info(
+        "💡 **Tip for best results:** Questions about **numbers and financials** "
+        "Questions about **cover page details** (HQ address, phone number, stock ticker, fiscal year end) work best. "
+        "Questions requiring **narrative content** from the PDF body "
+        "will return limited results."
+    )
+    
+    st.markdown("---")
+
     # Architecture diagram via Mermaid
     st.subheader("System Architecture")
     mermaid_html = f"""
