@@ -8,8 +8,10 @@ import hashlib
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import redis
+import os
 
-REDIS_URL = "redis://localhost:6379"
+#REDIS_URL = "redis://localhost:6379"
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
 SIMILARITY_THRESHOLD = 0.75
 CACHE_TTL = 86400  # 24 hours
 

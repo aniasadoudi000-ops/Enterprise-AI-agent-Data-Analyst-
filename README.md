@@ -143,19 +143,62 @@ gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/enterprise-ai-analyst
 gcloud run deploy enterprise-ai-analyst \
   --image gcr.io/YOUR_PROJECT_ID/enterprise-ai-analyst \
   --platform managed \
-  --region us-central1 \
+  --region europe-west1 \
   --allow-unauthenticated \
-  --set-env-vars GROQ_API_KEY=your_key,QDRANT_URL=your_qdrant_url
+  --min-instances=0 \
+  --timeout=300 \
+  --cpu=2 \
+  --memory=2Gi \
+  --set-env-vars GROQ_API_KEY=your_key,QDRANT_URL=your_qdrant_cloud_url,REDIS_URL=your_redis_url
 ```
 
 ---
 
-## Phase 4 — Evaluation
+## Streamlit UI
 
-Run the RAGAS-style evaluation script (5 test queries):
+A two-page interactive UI is included (`streamlit_app.py`): a project overview page and a ChatGPT-style chat page that sends questions to the FastAPI endpoint.
+
+### Run locally
+
+```bash
+# Make sure API_URL is set in your .env (local or Cloud Run)
+streamlit run streamlit_app.py
+```
+
+### Deploy on Streamlit Community Cloud (free, always-on)
+
+1. Push your code to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app**
+3. Select your repo, branch `main`, and file `streamlit_app.py`
+4. In **Secrets** (TOML format), add:
+   ```toml
+   API_URL = "https://enterprise-ai-analyst-883304283246.europe-west1.run.app"
+   ```
+5. Click **Deploy** — you get a public URL like `https://your-app.streamlit.app`
+
+The Streamlit app runs on Streamlit's servers 24/7 and calls your Cloud Run API. No need to keep your computer on.
+
+---
+
+### Local evaluation (direct agent call)
+
+Run the RAGAS-style evaluation script (5 test queries, calls the agent directly via LangGraph):
 
 ```bash
 python phase4_report/evaluate.py
+# → generates evaluation_results.json
+```
+
+### Cloud evaluation (HTTP against deployed endpoint)
+
+Validates the full production stack end-to-end by sending the same 5 questions to the live Cloud Run URL:
+
+```bash
+# Set your deployed API URL
+export API_URL=https://enterprise-ai-analyst-883304283246.europe-west1.run.app
+
+python phase4_report/evaluate_cloud.py
+# → generates phase4_report/cloud_evaluation_results.json
 ```
 
 See `phase4_report/REPORT.md` for the full architecture report, evaluation results, and cost analysis.
@@ -179,10 +222,12 @@ See `phase4_report/REPORT.md` for the full architecture report, evaluation resul
 │   ├── api.py                  # FastAPI REST endpoint
 │   └── Dockerfile              # Container for Cloud Run
 ├── phase4_report/
-│   ├── evaluate.py             # RAGAS evaluation (5 test queries)
+│   ├── evaluate.py             # RAGAS evaluation — local (5 test queries)
+│   ├── evaluate_cloud.py       # RAGAS evaluation — HTTP against Cloud Run
 │   └── REPORT.md               # Phase 4 architecture report
 ├── docker-compose.yml          # Qdrant + Redis services
 ├── Dockerfile                  # Root container
+├── streamlit_app.py            # Two-page Streamlit UI
 ├── requirements.txt
 ├── .env.example
 └── README.md
@@ -193,7 +238,8 @@ See `phase4_report/REPORT.md` for the full architecture report, evaluation resul
 ## Environment Variables
 
 | Variable | Description |
-|---|---|
+|---|â€”|
 | `GROQ_API_KEY` | Groq API key for Llama 3.3 70B inference |
-| `QDRANT_URL` | Qdrant server URL (default: `http://localhost:6333`) |
+| `QDRANT_URL` | Qdrant server URL (Qdrant Cloud URL or `http://localhost:6333`) |
 | `REDIS_URL` | Redis URL for semantic cache (default: `redis://localhost:6379`) |
+| `API_URL` | FastAPI endpoint used by Streamlit and `evaluate_cloud.py` (Cloud Run URL or `http://localhost:8080`) |
