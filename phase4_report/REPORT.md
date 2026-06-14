@@ -305,3 +305,8 @@ This project successfully implements all four required phases of the Enterprise 
 - **Phase 4:** RAGAS-style evaluation showing **4.4/5** on both Faithfulness and Answer Relevance, validated locally and via the live Cloud Run endpoint.
 
 **Advanced Option 2 (Semantic Cache)** is fully implemented, reducing cost and latency by up to 50% for repeated or semantically similar queries.
+
+---
+**To test** → Go to [enterprise-ai-analyst](https://dnkbzi5mm8wwwgbefgrake.streamlit.app)
+
+---

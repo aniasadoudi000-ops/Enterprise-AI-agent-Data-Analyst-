@@ -172,7 +172,7 @@ streamlit run streamlit_app.py
 3. Select your repo, branch `main`, and file `streamlit_app.py`
 4. In **Secrets** (TOML format), add:
    ```toml
-   API_URL = "https://enterprise-ai-analyst-883304283246.europe-west1.run.app"
+   API_URL = "Your API_URL"
    ```
 5. Click **Deploy** — you get a public URL like `https://your-app.streamlit.app`
 
@@ -243,3 +243,8 @@ See `phase4_report/REPORT.md` for the full architecture report, evaluation resul
 | `QDRANT_URL` | Qdrant server URL (Qdrant Cloud URL or `http://localhost:6333`) |
 | `REDIS_URL` | Redis URL for semantic cache (default: `redis://localhost:6379`) |
 | `API_URL` | FastAPI endpoint used by Streamlit and `evaluate_cloud.py` (Cloud Run URL or `http://localhost:8080`) |
+
+
+## Test the agent diretly hear 
+
+Go to [enterprise-ai-analyst](https://dnkbzi5mm8wwwgbefgrake.streamlit.app)
