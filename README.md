@@ -248,3 +248,6 @@ See `phase4_report/REPORT.md` for the full architecture report, evaluation resul
 ## Test the agent diretly hear 
 
 Go to [enterprise-ai-analyst](https://dnkbzi5mm8wwwgbefgrake.streamlit.app)
+## Collaboration
+
+Projet réalisé en binôme avec Isaac Schama dans le cadre du cours GenAI. Contributions personnelles : conception de l'agent LangGraph (Phase 2), déploiement Cloud Run (Phase 3), cache sémantique Redis (option bonus), et correction de l'implémentation initiale de la Phase 1.
